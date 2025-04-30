@@ -1,4 +1,10 @@
 #!/bin/bash
-mkdir prueba
-cd prueba
-echo "prueba exitosa!!!!!" > texto
+echo "FROM python:3" > Dockerfile
+echo "RUN pip install Flask" >> Dockerfile
+echo "WORKDIR /home/app" >> Dockerfile
+echo "COPY server.py ." >> Dockerfile
+echo "EXPOSE 8090" >> Dockerfile
+echo "CMD python3 /home/app/server.py" >> Dockerfile
+docker rm -f samrun 2 >/dev/null
+docker build -t sample .
+docker run -t -d -p 8090:8090 --name samrun sample
