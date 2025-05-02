@@ -5,7 +5,7 @@ echo "WORKDIR /home/app" >> Dockerfile
 echo "COPY server.py ." >> Dockerfile
 echo "EXPOSE 8090" >> Dockerfile
 echo "CMD python3 /home/app/server.py" >> Dockerfile
-sudo docker stop samrun || true
-sudo docker rm samrun || true
-sudo docker build -t sample .
-sudo docker run -t -d -p 8090:8090 --name samrun sample
+docker stop samrun || true
+docker rm samrun || true
+docker build -t sample .
+docker run -t -d -p 8090:8090 --name samrun sample
